@@ -23,7 +23,9 @@ class WordsController extends Controller
      */
     public function index()
     {
-        $word = $this->WordsModel->get();
+        $word = cache()->remember('allwords',60*60,function(){
+            return $this->WordsModel->select('words')->get();
+        });
         return WordResource::collection($word);
     }
 
