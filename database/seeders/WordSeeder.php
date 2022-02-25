@@ -16,8 +16,8 @@ class WordSeeder extends Seeder
      */
     public function run()
     {
-        $datas = file_get_contents("words.txt");
-        $words = explode(" ",$datas);
+        // $datas =
+        $words = explode(" ", file_get_contents("words.txt"));
         $time = 6;
         foreach($words as $word){
             $data = ['words'=>$word,'dateTime'=>Carbon::now()->addHour($time)];

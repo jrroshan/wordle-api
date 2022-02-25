@@ -18,6 +18,6 @@ class WordResource extends JsonResource
             $this->words,
         ];
 
-        return $resource;
+        return implode(",", $resource);
     }
 }
