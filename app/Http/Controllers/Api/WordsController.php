@@ -23,7 +23,7 @@ class WordsController extends Controller
      */
     public function index()
     {
-        $word =$this->WordsModel->select('words')->get();
+        $word = $this->WordsModel->select('words')->orderBy('words')->get();
 
         // $word = implode(",",$words);
         // $word = cache()->remember('allwords',60*60,function(){
