@@ -14,10 +14,6 @@ class WordResource extends JsonResource
      */
     public function toArray($request)
     {
-        $resource = [
-            $this->words,
-        ];
-
-        return implode(",", $resource);
+        return $this->words;
     }
 }

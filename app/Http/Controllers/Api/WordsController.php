@@ -33,7 +33,7 @@ class WordsController extends Controller
     }
 
     public function today(){
-        $word = $this->WordsModel->where('dateTime',">=",Carbon::now())->Where('dateTime',"<=",Carbon::now()->addHour(6))->take(1)->get();
+        $word = $this->WordsModel->where('dateTime',">=",Carbon::now())->Where('dateTime',"<=",Carbon::now()->addHour(3))->take(1)->get();
         return WordResource::collection($word);
     }
 }

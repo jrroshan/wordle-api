@@ -19,12 +19,12 @@ class WordSeeder extends Seeder
         // $datas =
         $words = explode(" ", file_get_contents('words.txt'));
         shuffle($words);
-        $time = 6;
+        $time = 3;
         foreach($words as $word){
             if(strlen($word) == 5 && ctype_alpha($word)){
             $data = ['words'=>$word,'dateTime'=>Carbon::now()->addHour($time)];
             Word::create($data);
-            $time+=6;
+            $time+=3;
         }
         }
 
