@@ -24,7 +24,7 @@ class WordsController extends Controller
      */
     public function index()
     {
-        $word = DB::table('words')->select('words')->get();
+        $word = DB::table('words')->select('words')->orderBy('words')->get();
         // $word = implode(",",$words);
         // $word = cache()->remember('allwords',60*60,function(){
         //     return $this->WordsModel->select('words')->get();
