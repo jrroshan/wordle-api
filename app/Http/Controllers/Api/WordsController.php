@@ -7,6 +7,7 @@ use App\Http\Resources\WordResource;
 use App\Models\Word;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WordsController extends Controller
 {
@@ -23,8 +24,7 @@ class WordsController extends Controller
      */
     public function index()
     {
-        $word = $this->WordsModel->select('words')->orderBy('words')->get();
-
+        $word = DB::table('words')->select('words')->get();
         // $word = implode(",",$words);
         // $word = cache()->remember('allwords',60*60,function(){
         //     return $this->WordsModel->select('words')->get();
@@ -33,7 +33,8 @@ class WordsController extends Controller
     }
 
     public function today(){
-        $word = $this->WordsModel->where('dateTime',">=",Carbon::now())->Where('dateTime',"<=",Carbon::now()->addHour(3))->take(1)->get();
+        $word = DB::table('words')->select('words')->where('dateTime','>=',Carbon::now())->Where('dateTime',"<=",Carbon::now()->addHour(3))->take(1)->get();
+//        $word = $this->WordsModel->where('dateTime',">=",Carbon::now())->Where('dateTime',"<=",Carbon::now()->addHour(3))->take(1)->get();
         return WordResource::collection($word);
     }
 }
